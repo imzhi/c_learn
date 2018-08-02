@@ -1,11 +1,9 @@
 #include <stdio.h>
-#include <time.h>
+#include <limits.h>
+
 int main()
 {
-    char c;
+   printf("Storage size for int : %d \n", sizeof(int));
 
-    for(c = 'A'; c <= 'Z'; ++c)
-       printf("%c ", c);
-
-    return 0;
+   return 0;
 }
