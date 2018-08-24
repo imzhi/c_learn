@@ -7,9 +7,10 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int func6(char *);
-int func6_2(char *);
+void func6_2(char **);
 
 int main(int argc, char const *argv[])
 {
@@ -91,13 +92,16 @@ int main(int argc, char const *argv[])
     printf("ptr5->c: %d\n", ptr5->c);
 
     // 七、指针和函数的关系
-
     char *str6 = "abcdef";
-    printf("str6: %s\n", str6);
+    char str6_2[10] = "ccccc";
     int num6 = func6(str6);
-    printf("num6: %d\n", num6);
-    func6_2(str6);
+    printf("num6: %d\n\n", num6);
     printf("str6: %s\n", str6);
+    func6_2(&str6);
+    printf("str6: %s\n", str6);
+    // printf("str6_2: %s\n", str6_2);
+    // func6_2(*str6_2);
+    // printf("str6_2: %s\n", str6_2);
 
     return 0;
 }
@@ -111,8 +115,21 @@ int func6(char *s)
     return num;
 }
 
-int func6_2(char *s)
+void func6_2(char **s)
 {
-    char *p = "aaaa";
-    s = p;
+    printf("*s strlen: %d\n", strlen(*s));
+    printf("*s sizeof: %d\n", sizeof(*s));
+    printf("**s sizeof: %d\n", sizeof(**s));
+    printf("*s: %s\n\n", *s);
+    char *p = "0123456798";
+    // *s = (char *) malloc(strlen(p) * sizeof(p));
+    printf("*s strlen: %d\n", strlen(*s));
+    printf("*s sizeof: %d\n", sizeof(*s));
+    printf("**s sizeof: %d\n", sizeof(**s));
+    printf("*s: %s\n\n", *s);
+    *s = p;
+    printf("*s strlen: %d\n", strlen(*s));
+    printf("*s sizeof: %d\n", sizeof(*s));
+    printf("**s sizeof: %d\n", sizeof(**s));
+    printf("*s: %s\n\n", *s);
 }
